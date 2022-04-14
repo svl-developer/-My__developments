@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пример 1</title>
+</head>
+<body>
+    <style>
+
+        .app{
+            display: flex;
+            width: 100vw;
+            justify-content: space-around;
+
+             
+         }
+        .wrapper-0{
+             flex-basis: 300px;
+             height: 800px;
+             /* display: flex;
+             justify-content: flex-start;
+             flex-direction: column; */
+         
+         }
+
+        .warapper-1{
+             flex-basis: 300px;
+             display: flex;
+             justify-content: flex-start;
+             flex-direction: column;
+
+         }
+
+         h1{
+             text-align: center;
+         }
+
+        .wrapper__block{
+
+            flex-basis: 300px;
+            /* min-height: 100px; */
+            align-self: center;
+            margin-top: 20px;
+        
+
+         }
+
+        .bottom-0, .bottom-1{
+             margin-top: 20px;
+         }
+
+         .block{
+             /* width: 200px;
+             height: 200px; */
+             background-color: chocolate;
+             margin: 0 auto;
+         }
+
+
+         .res0, .res1{
+             font-size: 30px;
+         }
+
+
+        
+
+    </style>
+
+    <h1>CSS ГЕНЕРАТОР</h1>
+
+    <div class="app">
+        <div class="warapper-0">
+             <p>Верхний левый угол</p>
+             <input type="range" name="ul" class="k" step="2" min="0" max="500" value="0">
+             <input type="text" name="t1" class="d">
+             <p>Верхний праый угол</p>
+             <input type="range" name="ul" class="k" step="2" min="0" max="500" value="0">
+             <input type="text" name="t1" class="t1 d">
+             <p>Нижний правый угол</p>
+             <input type="range" name="ul" class="k" step="2" min="0" max="500" value="0">
+             <input type="text" name="t1" class="d">
+             <p>Нижний левый угол</p>
+             <input type="range" name="ul" class="k" step="2" min="0" max="500" value="0">
+             <input type="text" name="t1" class="d">
+
+
+        </div>
+        <div class="warapper-1">
+             <p>Ширина блока</p>
+             <input type="text" name="width" class="width" value="0">
+             <p>Высота блока</p>
+             <input type="text" name="height" class="height" value="0">
+             <button class="bottom-0">Создать прямоугольник или квадрат</button>
+             <div class="wrapper__block">
+                  <div class="block"></div>
+             </div>
+             <button class="bottom-1">Показать css стили</button>
+             <div class="res0"></div>
+             <div class="res1"></div>
+            
+        </div>
+
+    </div>
+
+    <script>
+
+        let elem = document.querySelectorAll('.k');
+
+        for(let i = 0; i < elem.length; i++){
+            elem[i].addEventListener('input', job);
+
+        }
+
+        function job(){
+
+            let el = document.querySelectorAll('.k');
+            let num = document.querySelectorAll('.d');
+
+            for(let i = 0; i < el.length; i++){
+                num[i].value = el[i].value;
+
+
+            }
+          
+            let rhe = document.querySelectorAll('.k');
+            let block = document.querySelector('.block');
+            block.style.borderRadius = `${rhe[0].value}px ${rhe[1].value}px  ${rhe[2].value}px  ${rhe[3].value}px; `
+
+        }
+
+        let button = document.querySelector('.bottom-1');
+
+        button.addEventListener('click', function(){
+
+            let rhe = document.querySelectorAll('.k');
+            let result0 = document.querySelector('.res0');
+            let result1 = document.querySelector('.res1');
+            let width = document.querySelector('.width').value;
+            let height = document.querySelector('.height').value;
+            result0.innerText = `border-radius: ${rhe[0].value}px ${rhe[1].value}px  ${rhe[2].value}px  ${rhe[3].value}px`;
+            result1.innerText = `width: ${width}px; height: ${height}px;`;
+
+        })
+
+        let behind = document.querySelector('.bottom-0');
+
+        behind.addEventListener('click', function(){
+
+            let block = document.querySelector('.block');
+            let width = document.querySelector('.width').value;
+            let height = document.querySelector('.height').value;
+
+
+            block.style.cssText = `
+            width: ${width}px;
+            height: ${height}px;
+            
+            `;
+
+        })
+
+
+    </script>
+    
+</body>
+</html>
